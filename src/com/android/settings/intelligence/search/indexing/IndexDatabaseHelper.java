@@ -297,7 +297,7 @@ public class IndexDatabaseHelper extends SQLiteOpenHelper {
      */
     static void setIndexed(Context context, List<ResolveInfo> providers) {
         final String localeStr = Locale.getDefault().toString();
-        final String fingerprint = Build.FINGERPRINT;
+        final String fingerprint = Build.VERSION.INCREMENTAL;
         final String providerVersionedNames =
                 IndexDatabaseHelper.buildProviderVersionedNames(context, providers);
         final String devicePolicyResourcesVersion = context.getSystemService(
@@ -322,7 +322,7 @@ public class IndexDatabaseHelper extends SQLiteOpenHelper {
      */
     static boolean isFullIndex(Context context, List<ResolveInfo> providers) {
         final String localeStr = Locale.getDefault().toString();
-        final String fingerprint = Build.FINGERPRINT;
+        final String fingerprint = Build.VERSION.INCREMENTAL;
         final String providerVersionedNames =
                 IndexDatabaseHelper.buildProviderVersionedNames(context, providers);
         final SharedPreferences prefs = context
