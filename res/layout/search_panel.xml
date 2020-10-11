@@ -25,8 +25,7 @@
         android:id="@+id/search_bar_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/search_panel_background"
-        android:elevation="4dp">
+        android:background="@color/search_panel_background">
         <androidx.cardview.widget.CardView
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
