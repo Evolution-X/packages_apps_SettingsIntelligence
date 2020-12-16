@@ -25,6 +25,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
+import android.os.SystemProperties;
 import androidx.annotation.VisibleForTesting;
 import android.text.TextUtils;
 import android.util.Log;
@@ -171,6 +172,8 @@ public class IndexDatabaseHelper extends SQLiteOpenHelper {
 
     private final Context mContext;
 
+    private static final String DATE = SystemProperties.get("ro.build.date", Build.UNKNOWN);
+
     public static synchronized IndexDatabaseHelper getInstance(Context context) {
         if (sSingleton == null) {
             sSingleton = new IndexDatabaseHelper(context);
@@ -288,7 +291,7 @@ public class IndexDatabaseHelper extends SQLiteOpenHelper {
      */
     static void setIndexed(Context context, List<ResolveInfo> providers) {
         final String localeStr = Locale.getDefault().toString();
-        final String fingerprint = Build.DATE;
+        final String fingerprint = DATE;
         final String providerVersionedNames =
                 IndexDatabaseHelper.buildProviderVersionedNames(context, providers);
         context.getSharedPreferences(SHARED_PREFS_TAG, Context.MODE_PRIVATE)
@@ -309,7 +312,7 @@ public class IndexDatabaseHelper extends SQLiteOpenHelper {
      */
     static boolean isFullIndex(Context context, List<ResolveInfo> providers) {
         final String localeStr = Locale.getDefault().toString();
-        final String fingerprint = Build.DATE;
+        final String fingerprint = DATE;
         final String providerVersionedNames =
                 IndexDatabaseHelper.buildProviderVersionedNames(context, providers);
         final SharedPreferences prefs = context
