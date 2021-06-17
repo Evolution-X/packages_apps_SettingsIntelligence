@@ -172,7 +172,7 @@ public class IndexDatabaseHelper extends SQLiteOpenHelper {
 
     private final Context mContext;
 
-    private static final String DATE = SystemProperties.get("ro.build.date", Build.UNKNOWN);
+    private static final String EVOLUTION_FINGERPRINT = SystemProperties.get("ro.product.build.fingerprint", Build.UNKNOWN);
 
     public static synchronized IndexDatabaseHelper getInstance(Context context) {
         if (sSingleton == null) {
@@ -291,7 +291,7 @@ public class IndexDatabaseHelper extends SQLiteOpenHelper {
      */
     static void setIndexed(Context context, List<ResolveInfo> providers) {
         final String localeStr = Locale.getDefault().toString();
-        final String fingerprint = DATE;
+        final String fingerprint = EVOLUTION_FINGERPRINT;
         final String providerVersionedNames =
                 IndexDatabaseHelper.buildProviderVersionedNames(context, providers);
         context.getSharedPreferences(SHARED_PREFS_TAG, Context.MODE_PRIVATE)
@@ -312,7 +312,7 @@ public class IndexDatabaseHelper extends SQLiteOpenHelper {
      */
     static boolean isFullIndex(Context context, List<ResolveInfo> providers) {
         final String localeStr = Locale.getDefault().toString();
-        final String fingerprint = DATE;
+        final String fingerprint = EVOLUTION_FINGERPRINT;
         final String providerVersionedNames =
                 IndexDatabaseHelper.buildProviderVersionedNames(context, providers);
         final SharedPreferences prefs = context
