@@ -15,8 +15,11 @@
   limitations under the License.
   -->
 
-<resources>
+<resources
+    xmlns:androidprv="http://schemas.android.com/apk/prv/res/android">
+
     <color name="launcher_background_color">#ff008577</color>
 
-    <color name="search_bar_background">?android:attr/colorBackground</color>
+    <color name="search_bar_background">@androidprv:color/materialColorSurfaceBright</color>
+
 </resources>

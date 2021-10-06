@@ -18,6 +18,6 @@
 <resources
     xmlns:androidprv="http://schemas.android.com/apk/prv/res/android">
 
-    <color name="search_bar_background">?androidprv:attr/colorSurfaceVariant</color>
+    <color name="search_bar_background">@androidprv:color/materialColorSurfaceContainerHigh</color>
 
 </resources>
