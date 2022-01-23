@@ -100,6 +100,13 @@ public class InstalledAppResultTask extends SearchQueryTask.QueryWorker {
                 continue;
             }
 
+            // Resource overlays (e.g. icon packs) add no useful info or settings, showing
+            // them clutters the results and can lead to assumptions (like gestures working
+            // on a device with hw keys)
+            if (info.isResourceOverlay()) {
+                continue;
+            }
+
             final Intent targetIntent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                     .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                     .setData(Uri.fromParts(INTENT_SCHEME, info.packageName, null /* fragment */))
